@@ -8,11 +8,13 @@
     "Chanwoo"
   ],
   "contributors": [
-    "EightSidedSquare"
+    "Nullioner (Textures)",
+    "EightSidedSquare (Inspiration)"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/4chanwoo/DeeperDark",
+    "sources": "https://github.com/4chanwoo/DeeperDark",
+    "issues": "https://github.com/4chanwoo/DeeperDark/issues"
   },
   "license": "MIT License",
   "icon": "assets/deeper_dark/icon.png",
