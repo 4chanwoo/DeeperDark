@@ -4,10 +4,8 @@
 
 # Deeper Dark
 
-**The deep dark, but it remembers you were there.**
-
-Screaming vases that wake the whole city, sculk that bites, and capacitors full of stolen souls.
-Vanilla-style additions for Minecraft 1.19.2's ancient cities.
+A mod inspired by EightSidedSquare's Deeper Dark showcased on Content SMP. 
+(basically a full recreation + extras because I'm an impatient as fuck) 
 
 ![Minecraft 1.19.2](https://img.shields.io/badge/Minecraft-1.19.2-3c8527?style=flat-square)
 ![Fabric](https://img.shields.io/badge/Loader-Fabric%20%7C%20Quilt-dbd0b4?style=flat-square)
