@@ -2,6 +2,7 @@ package com.chanwoo.deeperdark.core;
 
 import com.chanwoo.deeperdark.common.entity.AncientVaseBlockEntity;
 import com.chanwoo.deeperdark.common.entity.SculkCapacitorBlockEntity;
+import com.chanwoo.deeperdark.common.entity.SculkOrificeBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
@@ -18,6 +19,9 @@ public final class DeeperDarkBlockEntities {
                     DeeperDarkBlocks.ROTUND_SCREAMING_VASE,
                     DeeperDarkBlocks.TURGID_SCREAMING_VASE,
                     DeeperDarkBlocks.GAUNT_SCREAMING_VASE).build());
+
+    public static final BlockEntityType<SculkOrificeBlockEntity> SCULK_ORIFICE = register("sculk_orifice",
+            FabricBlockEntityTypeBuilder.create(SculkOrificeBlockEntity::new, DeeperDarkBlocks.SCULK_ORIFICE).build());
 
     private static <T extends BlockEntityType<?>> T register(String name, T blockEntityType) {
         return Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, name), blockEntityType);

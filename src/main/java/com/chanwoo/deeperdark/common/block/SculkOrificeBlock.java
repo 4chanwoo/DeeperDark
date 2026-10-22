@@ -1,10 +1,10 @@
 package com.chanwoo.deeperdark.common.block;
 
+import com.chanwoo.deeperdark.common.entity.SculkOrificeBlockEntity;
 import com.chanwoo.deeperdark.core.DeeperDarkDamageSources;
 import com.chanwoo.deeperdark.core.DeeperDarkProperties;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -26,13 +26,16 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * A sculk mouth. Living things that step into it get stuck and bitten, like evoker fangs snapping shut.
- * Sneaking past it is safe.
+ * A sculk mouth. Living things that fall into it get stuck and bitten, like evoker fangs snapping shut.
+ * Sneaking past it is safe. The jaws are drawn by the block entity renderer so they can breathe and snap.
  */
-public class SculkOrificeBlock extends Block {
+public class SculkOrificeBlock extends BlockWithEntity {
     public static final BooleanProperty BITING = DeeperDarkProperties.BITING;
+    /** Synced block event that plays the bite animation on clients. */
+    public static final int BITE_EVENT = 1;
 
     private static final int BITE_COOLDOWN = 20;
     private static final float BITE_DAMAGE = 4.0f;
@@ -76,7 +79,7 @@ public class SculkOrificeBlock extends Block {
             Random random = world.getRandom();
             boolean moving = entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ();
             if (moving && random.nextInt(3) == 0) {
-                world.addParticle(new BlockStateParticleEffect(ParticleTypes.BLOCK, state),
+                world.addParticle(new BlockStateParticleEffect(ParticleTypes.BLOCK, Blocks.SCULK.getDefaultState()),
                         entity.getX(), pos.getY() + 1, entity.getZ(),
                         MathHelper.nextBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f,
                         MathHelper.nextBetween(random, -1.0f, 1.0f) * 0.083333336f);
@@ -96,9 +99,17 @@ public class SculkOrificeBlock extends Block {
     private void bite(BlockState state, ServerWorld world, BlockPos pos, LivingEntity entity) {
         world.setBlockState(pos, state.with(BITING, true), Block.NOTIFY_ALL);
         world.createAndScheduleBlockTick(pos, this, BITE_COOLDOWN);
+        world.addSyncedBlockEvent(pos, this, BITE_EVENT, 0);
 
-        world.playSound(null, pos, SoundEvents.ENTITY_EVOKER_FANGS_ATTACK, SoundCategory.BLOCKS, 1.0f, 0.85f + world.random.nextFloat() * 0.3f);
-        world.spawnParticles(ParticleTypes.SCULK_SOUL, pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5, 3, 0.2, 0.1, 0.2, 0.02);
+        float pitch = 0.85f + world.random.nextFloat() * 0.3f;
+        world.playSound(null, pos, SoundEvents.ENTITY_EVOKER_FANGS_ATTACK, SoundCategory.BLOCKS, 1.0f, pitch);
+        world.playSound(null, pos, SoundEvents.BLOCK_SCULK_BREAK, SoundCategory.BLOCKS, 0.8f, pitch * 0.9f);
+
+        // Chunks of sculk flying out of the snapping mouth.
+        world.spawnParticles(new BlockStateParticleEffect(ParticleTypes.BLOCK, Blocks.SCULK.getDefaultState()),
+                pos.getX() + 0.5, pos.getY() + 0.95, pos.getZ() + 0.5, 30, 0.3, 0.1, 0.3, 0.15);
+        world.spawnParticles(ParticleTypes.SCULK_SOUL, pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5, 2, 0.2, 0.1, 0.2, 0.02);
+
         entity.damage(DeeperDarkDamageSources.SCULK_ORIFICE, BITE_DAMAGE);
         world.emitGameEvent(entity, GameEvent.BLOCK_ACTIVATE, pos);
     }
@@ -108,5 +119,16 @@ public class SculkOrificeBlock extends Block {
         if (state.get(BITING)) {
             world.setBlockState(pos, state.with(BITING, false), Block.NOTIFY_ALL);
         }
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new SculkOrificeBlockEntity(pos, state);
     }
 }
