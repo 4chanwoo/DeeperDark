@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "deeper_dark",
   "version": "${version}",
-
   "name": "Deeper Dark",
   "description": "Deep Dark and Sculk expansion mod",
   "authors": [
@@ -15,10 +14,8 @@
     "homepage": "https://fabricmc.net/",
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
-
   "license": "MIT License",
   "icon": "assets/deeper_dark/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -26,12 +23,14 @@
     ],
     "client": [
       "com.chanwoo.deeperdark.client.DeeperDarkClient"
+    ],
+    "modmenu": [
+      "com.chanwoo.deeperdark.client.compat.DeeperDarkModMenu"
     ]
   },
   "mixins": [
     "deeperdark.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.14.9",
     "fabric-api": "*",
@@ -39,6 +38,7 @@
     "java": ">=17"
   },
   "suggests": {
-    "another-mod": "*"
+    "lodestone": "*",
+    "modmenu": "*"
   }
 }

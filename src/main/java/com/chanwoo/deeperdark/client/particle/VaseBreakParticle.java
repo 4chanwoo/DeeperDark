@@ -6,7 +6,6 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Quaternion;
@@ -16,18 +15,31 @@ import net.minecraft.util.math.Vec3f;
 import java.util.function.Consumer;
 
 /**
- * A flat ring that bursts out of a vase's mouth, drawn facing both up and down like the shrieker's ring.
+ * A huge flat ring that bursts out of a vase's mouth, made from the warden's sonic boom frames and drawn
+ * facing both up and down like the shrieker's ring.
  */
 @Environment(EnvType.CLIENT)
 public class VaseBreakParticle extends SpriteBillboardParticle {
     private static final Vec3f ROTATION_AXIS = Util.make(new Vec3f(0.5f, 0.5f, 0.5f), Vec3f::normalize);
     private static final float TILT = 1.56f;
+    /** The ring is see-through, then fades out over the second half of its life. */
+    private static final float OPACITY = 0.55f;
 
     private final SpriteProvider sprites;
+    private final ParticleTextureSheet sheet;
 
-    protected VaseBreakParticle(ClientWorld world, double x, double y, double z, SpriteProvider sprites) {
+    public VaseBreakParticle(ClientWorld world, double x, double y, double z, SpriteProvider sprites) {
+        this(world, x, y, z, sprites, ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT);
+    }
+
+    /** With an additive {@code sheet} (from LodestoneLib) the ring glows, tinted sculk cyan. */
+    public VaseBreakParticle(ClientWorld world, double x, double y, double z, SpriteProvider sprites, ParticleTextureSheet sheet) {
         super(world, x, y, z, 0.0, 0.0, 0.0);
         this.sprites = sprites;
+        this.sheet = sheet;
+        if (sheet != ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT) {
+            this.setColor(0.45f, 0.95f, 1.0f);
+        }
         this.scale = 14.0f;
         this.maxAge = 25;
         this.gravityStrength = 0.0f;
@@ -49,7 +61,8 @@ public class VaseBreakParticle extends SpriteBillboardParticle {
 
     @Override
     public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
-        this.alpha = 1.0f - MathHelper.clamp((this.age + tickDelta) / this.maxAge, 0.0f, 1.0f);
+        float progress = MathHelper.clamp((this.age + tickDelta) / this.maxAge, 0.0f, 1.0f);
+        this.alpha = OPACITY * MathHelper.clamp(2.0f - 2.0f * progress, 0.0f, 1.0f);
         this.buildQuad(vertexConsumer, camera, tickDelta, quaternion -> quaternion.hamiltonProduct(Vec3f.POSITIVE_X.getRadialQuaternion(-TILT)));
         this.buildQuad(vertexConsumer, camera, tickDelta, quaternion -> {
             quaternion.hamiltonProduct(Vec3f.POSITIVE_Y.getRadialQuaternion(-MathHelper.PI));
@@ -92,20 +105,6 @@ public class VaseBreakParticle extends SpriteBillboardParticle {
 
     @Override
     public ParticleTextureSheet getType() {
-        return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
-    }
-
-    @Environment(EnvType.CLIENT)
-    public static class Factory implements ParticleFactory<DefaultParticleType> {
-        private final SpriteProvider sprites;
-
-        public Factory(SpriteProvider sprites) {
-            this.sprites = sprites;
-        }
-
-        @Override
-        public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new VaseBreakParticle(world, x, y, z, this.sprites);
-        }
+        return this.sheet;
     }
 }

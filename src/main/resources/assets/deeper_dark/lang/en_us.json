@@ -10,5 +10,9 @@
   "death.attack.deeper_dark.sculkOrifice": "%1$s was devoured by a sculk orifice",
   "death.attack.deeper_dark.sculkOrifice.player": "%1$s was devoured by a sculk orifice while fighting %2$s",
   "subtitles.deeper_dark.block.ancient_vase.shatter": "Vase shatters",
+  "config.deeper_dark.title": "Deeper Dark",
+  "config.deeper_dark.lodestone_particles": "Lodestone Particles",
+  "config.deeper_dark.lodestone_particles.tooltip": "Glowing LodestoneLib versions of the vase, aura and capacitor particles. Off uses vanilla-style particles.",
+  "config.deeper_dark.lodestone_particles.missing": "Install LodestoneLib to use Lodestone particles",
   "subtitles.deeper_dark.block.ancient_vase.place": "Vase placed"
 }

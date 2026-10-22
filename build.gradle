@@ -11,11 +11,41 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	maven { url = "https://maven.terraformersmc.com/releases" }
+	maven { url = "https://jitpack.io" }
+}
+
+configurations {
+	lodestoneQuilt
+}
+
+/**
+ * LodestoneLib for 1.19.2 is only published as a Quilt mod, and this version of Loom only remaps jars that carry
+ * a fabric.mod.json. Copy it with a stub one added so it can be compiled against. It is never shipped.
+ */
+def fabricatedLodestoneJar() {
+	def source = configurations.lodestoneQuilt.singleFile
+	def target = file("${buildDir}/lodestone/${source.name.replace('.jar', '-fabricated.jar')}")
+	if (!target.exists()) {
+		target.parentFile.mkdirs()
+		new java.util.zip.ZipOutputStream(new FileOutputStream(target)).withCloseable { out ->
+			new java.util.zip.ZipFile(source).withCloseable { zip ->
+				zip.entries().each { entry ->
+					if (entry.name != 'fabric.mod.json') {
+						out.putNextEntry(new java.util.zip.ZipEntry(entry.name))
+						if (!entry.directory) {
+							out << zip.getInputStream(entry)
+						}
+						out.closeEntry()
+					}
+				}
+			}
+			out.putNextEntry(new java.util.zip.ZipEntry('fabric.mod.json'))
+			out << '{"schemaVersion": 1, "id": "lodestone", "version": "' + project.lodestone_version + '"}'
+			out.closeEntry()
+		}
+	}
+	return target
 }
 
 dependencies {
@@ -28,6 +58,12 @@ dependencies {
 	//modImplementation "net.fabricmc.fabric-api:fabric-api:0.37.1+1.16"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// Optional: config screen in Mod Menu, and LodestoneLib for the enhanced particles. Neither is bundled.
+	modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive = false }
+	modLocalRuntime("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive = false }
+	lodestoneQuilt("com.github.Arathain:LodestoneLib-Quilt:${project.lodestone_version}") { transitive = false }
+	modCompileOnly files(fabricatedLodestoneJar())
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
