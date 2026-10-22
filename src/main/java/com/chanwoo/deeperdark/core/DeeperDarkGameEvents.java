@@ -9,7 +9,7 @@ import static com.chanwoo.deeperdark.core.DeeperDarkMod.MOD_ID;
 
 public final class DeeperDarkGameEvents {
     /** Emitted by an ancient vase when it shatters or rings. Heard by other vases, sculk sensors and shriekers. */
-    public static final GameEvent VASE_SCREAM = register("vase_scream", AncientVaseBlockEntity.LISTENER_RANGE);
+    public static final GameEvent VASE_SCREAM = register("vase_scream", AncientVaseBlockEntity.RANGE);
 
     private static GameEvent register(String name, int range) {
         Identifier id = new Identifier(MOD_ID, name);

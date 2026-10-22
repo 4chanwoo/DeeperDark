@@ -1,5 +1,6 @@
 package com.chanwoo.deeperdark.core;
 
+import com.chanwoo.deeperdark.common.entity.SculkAlerts;
 import com.chanwoo.deeperdark.common.worldgen.DeeperDarkFeatures;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -18,5 +19,6 @@ public class DeeperDarkMod implements ModInitializer {
         DeeperDarkGameEvents.init();
         DeeperDarkFeatures.init();
         DeeperDarkWorld.init();
+        SculkAlerts.init();
     }
 }
