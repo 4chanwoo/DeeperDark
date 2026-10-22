@@ -16,11 +16,11 @@ import static com.chanwoo.deeperdark.core.DeeperDarkMod.MOD_ID;
 
 public final class DeeperDarkBlocks {
     public static final AncientVaseBlock ROTUND_SCREAMING_VASE = register("rotund_screaming_vase",
-            new RotundScreamingVaseBlock(vaseSettings(0.5f)));
+            new RotundScreamingVaseBlock(vaseSettings()));
     public static final AncientVaseBlock TURGID_SCREAMING_VASE = register("turgid_screaming_vase",
-            new TurgidScreamingVaseBlock(vaseSettings(0.3f)));
+            new TurgidScreamingVaseBlock(vaseSettings()));
     public static final AncientVaseBlock GAUNT_SCREAMING_VASE = register("gaunt_screaming_vase",
-            new GauntScreamingVaseBlock(vaseSettings(0.3f)));
+            new GauntScreamingVaseBlock(vaseSettings()));
 
     public static final Block ECHO_BONE = register("echo_bone",
             new PillarBlock(FabricBlockSettings.copy(Blocks.BONE_BLOCK)));
@@ -32,8 +32,11 @@ public final class DeeperDarkBlocks {
             new SculkCapacitorBlock(AbstractBlock.Settings.of(Material.SCULK).strength(3.0f).sounds(BlockSoundGroup.SCULK_CATALYST).nonOpaque()),
             SculkCapacitorBlockItem::new);
 
-    private static AbstractBlock.Settings vaseSettings(float strength) {
-        return AbstractBlock.Settings.of(Material.STONE).strength(strength).nonOpaque().sounds(DeeperDarkSounds.ANCIENT_VASE);
+    /** Even a wooden pickaxe (speed 2) breaks a vase instantly: 2 / hardness / 30 >= 1. */
+    private static final float VASE_HARDNESS = 0.05f;
+
+    private static AbstractBlock.Settings vaseSettings() {
+        return AbstractBlock.Settings.of(Material.STONE).strength(VASE_HARDNESS).nonOpaque().sounds(DeeperDarkSounds.ANCIENT_VASE);
     }
 
     private static <T extends Block> T register(String name, T block) {
