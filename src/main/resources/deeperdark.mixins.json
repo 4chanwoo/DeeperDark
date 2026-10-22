@@ -4,7 +4,9 @@
   "package": "com.chanwoo.deeperdark.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ItemPlacementContextMixin"
+    "ItemPlacementContextMixin",
+    "SculkCatalystBlockEntityMixin",
+    "SculkPatchFeatureMixin"
   ],
   "client": [
   ],

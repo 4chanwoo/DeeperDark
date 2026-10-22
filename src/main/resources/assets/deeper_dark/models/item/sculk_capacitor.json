@@ -1,3 +1,29 @@
 {
-  "parent": "deeper_dark:block/sculk_capacitor"
+  "parent": "deeper_dark:block/sculk_capacitor",
+  "overrides": [
+    {
+      "predicate": {
+        "deeper_dark:charge": 0.001
+      },
+      "model": "deeper_dark:block/sculk_capacitor_charge_1"
+    },
+    {
+      "predicate": {
+        "deeper_dark:charge": 0.2501
+      },
+      "model": "deeper_dark:block/sculk_capacitor_charge_2"
+    },
+    {
+      "predicate": {
+        "deeper_dark:charge": 0.5001
+      },
+      "model": "deeper_dark:block/sculk_capacitor_charge_3"
+    },
+    {
+      "predicate": {
+        "deeper_dark:charge": 0.7501
+      },
+      "model": "deeper_dark:block/sculk_capacitor_charge_4"
+    }
+  ]
 }

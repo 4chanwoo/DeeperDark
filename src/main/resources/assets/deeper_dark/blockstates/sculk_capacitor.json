@@ -1,5 +1,19 @@
 {
   "variants": {
-    "": { "model":  "deeper_dark:block/sculk_capacitor" }
+    "charge=0": {
+      "model": "deeper_dark:block/sculk_capacitor"
+    },
+    "charge=1": {
+      "model": "deeper_dark:block/sculk_capacitor_charge_1"
+    },
+    "charge=2": {
+      "model": "deeper_dark:block/sculk_capacitor_charge_2"
+    },
+    "charge=3": {
+      "model": "deeper_dark:block/sculk_capacitor_charge_3"
+    },
+    "charge=4": {
+      "model": "deeper_dark:block/sculk_capacitor_charge_4"
+    }
   }
 }
