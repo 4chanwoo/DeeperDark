@@ -20,6 +20,7 @@ public class DeeperDarkMod implements ModInitializer {
         DeeperDarkGameEvents.init();
         DeeperDarkFeatures.init();
         DeeperDarkWorld.init();
+        DeeperDarkLoot.init();
         SculkAlerts.init();
         SculkContainment.init();
     }
