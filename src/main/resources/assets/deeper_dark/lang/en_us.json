@@ -6,8 +6,9 @@
   "block.deeper_dark.sculk_capacitor": "Sculk Capacitor",
   "block.deeper_dark.echo_bone": "Echo Bone",
   "itemGroup.deeper_dark.deeper_dark": "Deeper Dark",
-  "subtitles.deeper_dark.block.ancient_vase.break": "Vase shatters",
   "tooltip.deeper_dark.sculk_capacitor.charges": "Charges: %s / %s",
   "death.attack.deeper_dark.sculkOrifice": "%1$s was devoured by a sculk orifice",
-  "death.attack.deeper_dark.sculkOrifice.player": "%1$s was devoured by a sculk orifice while fighting %2$s"
+  "death.attack.deeper_dark.sculkOrifice.player": "%1$s was devoured by a sculk orifice while fighting %2$s",
+  "subtitles.deeper_dark.block.ancient_vase.shatter": "Vase shatters",
+  "subtitles.deeper_dark.block.ancient_vase.place": "Vase placed"
 }

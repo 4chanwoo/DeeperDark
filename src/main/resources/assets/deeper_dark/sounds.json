@@ -1,99 +1,39 @@
 {
-  "block.ancient_vase.break": {
-    "subtitle": "subtitles.deeper_dark.block.ancient_vase.break",
+  "block.ancient_vase.shatter": {
+    "subtitle": "subtitles.deeper_dark.block.ancient_vase.shatter",
     "sounds": [
       {
-        "name": "random/glass1",
-        "pitch": 0.85,
-        "volume": 1.0,
-        "weight": 2
+        "name": "deeper_dark:ancient_vase/shatter1",
+        "pitch": 1.0
       },
       {
-        "name": "random/glass2",
-        "pitch": 0.85,
-        "volume": 1.0,
-        "weight": 2
+        "name": "deeper_dark:ancient_vase/shatter2",
+        "pitch": 1.0
       },
       {
-        "name": "random/glass3",
-        "pitch": 0.85,
-        "volume": 1.0,
-        "weight": 2
+        "name": "deeper_dark:ancient_vase/shatter3",
+        "pitch": 1.0
       },
       {
-        "name": "block/amethyst_cluster/break1",
-        "pitch": 0.8,
-        "volume": 0.8
-      },
-      {
-        "name": "block/amethyst_cluster/break2",
-        "pitch": 0.8,
-        "volume": 0.8
-      },
-      {
-        "name": "block/amethyst_cluster/break3",
-        "pitch": 0.8,
-        "volume": 0.8
-      },
-      {
-        "name": "block/amethyst_cluster/break4",
-        "pitch": 0.8,
-        "volume": 0.8
+        "name": "deeper_dark:ancient_vase/shatter4",
+        "pitch": 1.0
       }
     ]
   },
-  "block.ancient_vase.crumble": {
-    "subtitle": "subtitles.deeper_dark.block.ancient_vase.break",
+  "block.ancient_vase.place": {
+    "subtitle": "subtitles.deeper_dark.block.ancient_vase.place",
     "sounds": [
       {
-        "name": "block/calcite/break1",
-        "pitch": 1.2,
-        "volume": 1.0
+        "name": "deeper_dark:ancient_vase/place1",
+        "pitch": 1.0
       },
       {
-        "name": "block/calcite/break2",
-        "pitch": 1.2,
-        "volume": 1.0
+        "name": "deeper_dark:ancient_vase/place2",
+        "pitch": 1.0
       },
       {
-        "name": "block/calcite/break3",
-        "pitch": 1.2,
-        "volume": 1.0
-      },
-      {
-        "name": "block/calcite/break4",
-        "pitch": 1.2,
-        "volume": 1.0
-      },
-      {
-        "name": "block/nether_bricks/break1",
-        "pitch": 1.3,
-        "volume": 0.8
-      },
-      {
-        "name": "block/nether_bricks/break2",
-        "pitch": 1.3,
-        "volume": 0.8
-      },
-      {
-        "name": "block/nether_bricks/break3",
-        "pitch": 1.3,
-        "volume": 0.8
-      },
-      {
-        "name": "block/nether_bricks/break4",
-        "pitch": 1.3,
-        "volume": 0.8
-      },
-      {
-        "name": "block/nether_bricks/break5",
-        "pitch": 1.3,
-        "volume": 0.8
-      },
-      {
-        "name": "block/nether_bricks/break6",
-        "pitch": 1.3,
-        "volume": 0.8
+        "name": "deeper_dark:ancient_vase/place3",
+        "pitch": 1.0
       }
     ]
   }

@@ -9,15 +9,15 @@ import net.minecraft.util.registry.Registry;
 import static com.chanwoo.deeperdark.core.DeeperDarkMod.MOD_ID;
 
 public final class DeeperDarkSounds {
-    /** Glass layer of a vase shattering. */
-    public static final SoundEvent ANCIENT_VASE_BREAK = register("block.ancient_vase.break");
-    /** Ceramic layer of a vase shattering, played on top of {@link #ANCIENT_VASE_BREAK}. */
-    public static final SoundEvent ANCIENT_VASE_CRUMBLE = register("block.ancient_vase.crumble");
+    /** Ceramic shatter. */
+    public static final SoundEvent ANCIENT_VASE_SHATTER = register("block.ancient_vase.shatter");
+    /** Ceramic set down on stone. */
+    public static final SoundEvent ANCIENT_VASE_PLACE = register("block.ancient_vase.place");
 
     public static final BlockSoundGroup ANCIENT_VASE = new BlockSoundGroup(1.0f, 1.0f,
-            ANCIENT_VASE_BREAK,
+            ANCIENT_VASE_SHATTER,
             SoundEvents.BLOCK_DEEPSLATE_TILES_STEP,
-            SoundEvents.BLOCK_DEEPSLATE_TILES_PLACE,
+            ANCIENT_VASE_PLACE,
             SoundEvents.BLOCK_DEEPSLATE_TILES_HIT,
             SoundEvents.BLOCK_DEEPSLATE_TILES_FALL);
 
