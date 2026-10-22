@@ -1,13 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-
   "package": "com.chanwoo.deeperdark.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ItemPlacementContextMixin"
   ],
   "client": [
-
   ],
   "injectors": {
     "defaultRequire": 1
