@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:bone"
+    },
+    "X": {
+      "item": "minecraft:sculk"
+    },
+    "R": {
+      "item": "minecraft:bone_block"
+    }
+  },
+  "pattern": [
+    "R#R",
+    "# #",
+    "XXX"
+  ],
+  "result": {
+    "item": "deeper_dark:sculk_capacitor"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,half=bottom": { "model":  "deeper_dark:block/turgid_screaming_vase_lower" },
+    "facing=south,half=bottom": { "model":  "deeper_dark:block/turgid_screaming_vase_lower", "y": 180 },
+    "facing=west,half=bottom": { "model":  "deeper_dark:block/turgid_screaming_vase_lower", "y": 270 },
+    "facing=east,half=bottom": { "model":  "deeper_dark:block/turgid_screaming_vase_lower", "y": 90 },
+
+    "facing=north,half=top": { "model":  "deeper_dark:block/turgid_screaming_vase_upper" },
+    "facing=south,half=top": { "model":  "deeper_dark:block/turgid_screaming_vase_upper", "y": 180 },
+    "facing=west,half=top": { "model":  "deeper_dark:block/turgid_screaming_vase_upper", "y": 270 },
+    "facing=east,half=top": { "model":  "deeper_dark:block/turgid_screaming_vase_upper", "y": 90 }
+  }
+}

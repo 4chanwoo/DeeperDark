@@ -1,0 +1,13 @@
+{
+  "block.deeper_dark.gaunt_screaming_vase": "Gaunt Screaming Vase",
+  "block.deeper_dark.turgid_screaming_vase": "Turgid Screaming Vase",
+  "block.deeper_dark.rotund_screaming_vase": "Rotund Screaming Vase",
+  "block.deeper_dark.sculk_orifice": "Sculk Orifice",
+  "block.deeper_dark.sculk_capacitor": "Sculk Capacitor",
+  "block.deeper_dark.echo_bone": "Echo Bone",
+  "itemGroup.deeper_dark.deeper_dark": "Deeper Dark",
+  "subtitles.deeper_dark.block.ancient_vase.break": "Vase shatters",
+  "tooltip.deeper_dark.sculk_capacitor.charges": "Charges: %s / %s",
+  "death.attack.deeper_dark.sculkOrifice": "%1$s was devoured by a sculk orifice",
+  "death.attack.deeper_dark.sculkOrifice.player": "%1$s was devoured by a sculk orifice while fighting %2$s"
+}

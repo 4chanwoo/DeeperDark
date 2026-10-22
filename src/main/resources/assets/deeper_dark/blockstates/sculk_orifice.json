@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "biting=false": {
+      "model": "deeper_dark:block/sculk_orifice"
+    },
+    "biting=true": {
+      "model": "deeper_dark:block/sculk_orifice"
+    }
+  }
+}

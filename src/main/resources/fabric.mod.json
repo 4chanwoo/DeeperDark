@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "deeper_dark",
+  "version": "${version}",
+
+  "name": "Deeper Dark",
+  "description": "Deep Dark and Sculk expansion mod",
+  "authors": [
+    "Chanwoo"
+  ],
+  "contributors": [
+    "EightSidedSquare"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT License",
+  "icon": "assets/deeper_dark/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.chanwoo.deeperdark.core.DeeperDarkMod"
+    ],
+    "client": [
+      "com.chanwoo.deeperdark.client.DeeperDarkClient"
+    ]
+  },
+  "mixins": [
+    "deeperdark.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

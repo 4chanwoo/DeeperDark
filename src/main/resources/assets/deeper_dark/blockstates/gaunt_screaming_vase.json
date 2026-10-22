@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north,third=lower": { "model":  "deeper_dark:block/gaunt_screaming_vase_lower" },
+    "facing=south,third=lower": { "model":  "deeper_dark:block/gaunt_screaming_vase_lower", "y": 180 },
+    "facing=west,third=lower": { "model":  "deeper_dark:block/gaunt_screaming_vase_lower", "y": 270 },
+    "facing=east,third=lower": { "model":  "deeper_dark:block/gaunt_screaming_vase_lower", "y": 90 },
+
+    "facing=north,third=middle": { "model":  "deeper_dark:block/gaunt_screaming_vase_middle" },
+    "facing=south,third=middle": { "model":  "deeper_dark:block/gaunt_screaming_vase_middle", "y": 180 },
+    "facing=west,third=middle": { "model":  "deeper_dark:block/gaunt_screaming_vase_middle", "y": 270 },
+    "facing=east,third=middle": { "model":  "deeper_dark:block/gaunt_screaming_vase_middle", "y": 90 },
+
+    "facing=north,third=upper": { "model":  "deeper_dark:block/gaunt_screaming_vase_upper" },
+    "facing=south,third=upper": { "model":  "deeper_dark:block/gaunt_screaming_vase_upper", "y": 180 },
+    "facing=west,third=upper": { "model":  "deeper_dark:block/gaunt_screaming_vase_upper", "y": 270 },
+    "facing=east,third=upper": { "model":  "deeper_dark:block/gaunt_screaming_vase_upper", "y": 90 }
+  }
+}

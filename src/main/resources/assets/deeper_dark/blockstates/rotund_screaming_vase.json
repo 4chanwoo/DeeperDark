@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model":  "deeper_dark:block/rotund_screaming_vase" },
+    "facing=south": { "model":  "deeper_dark:block/rotund_screaming_vase", "y": 180 },
+    "facing=west": { "model":  "deeper_dark:block/rotund_screaming_vase", "y": 270 },
+    "facing=east": { "model":  "deeper_dark:block/rotund_screaming_vase", "y": 90 }
+  }
+}

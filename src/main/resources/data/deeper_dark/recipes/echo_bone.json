@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:bone_block"
+    },
+    "Q": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "pattern": [
+    "CQ",
+    "QC"
+  ],
+  "result": {
+    "count": 2,
+    "item": "deeper_dark:echo_bone"
+  }
+}
